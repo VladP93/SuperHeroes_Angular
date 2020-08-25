@@ -14,7 +14,7 @@ export class HeroesService {
   cargarHeores() {
     return this.http
       .get('https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/all.json')
-      .subscribe((res: any) => {
+      .subscribe((res: Heroe[]) => {
         this.heroes = res;
       });
   }

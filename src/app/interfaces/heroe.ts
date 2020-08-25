@@ -9,22 +9,21 @@ export interface Heroe {
     power: string;
     combat: string;
   };
-  appereance: {
+  appearance: {
     gender: string;
     race: string;
-
     height: [string];
     weight: [string];
   };
   biography: {
-    fullname: string;
+    fullName: string;
     aliases: [string];
     placeOfBirth: string;
     publisher: string;
     alignment: string;
   };
   work: {
-    ocupation: string;
+    occupation: string;
   };
   images: {
     md: string;

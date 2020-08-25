@@ -7,9 +7,7 @@ import { HeroesService } from '../../services/heroes.service';
   styleUrls: ['./heroes.component.css'],
 })
 export class HeroesComponent implements OnInit {
-  constructor(public hs: HeroesService) {
-    console.log('heroes');
-  }
+  constructor(public hs: HeroesService) {}
 
   ngOnInit(): void {}
 }
