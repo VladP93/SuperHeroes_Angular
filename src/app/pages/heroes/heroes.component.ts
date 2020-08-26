@@ -10,6 +10,7 @@ export class HeroesComponent implements OnInit {
   findByRace = '';
   findByAlignment = '';
   findByPublisher = '';
+  p: number = 1;
 
   constructor(public hs: HeroesService) {}
 

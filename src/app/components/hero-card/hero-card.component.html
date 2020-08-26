@@ -1,0 +1,38 @@
+<div class="card mb-3 espacio" style="max-width: 540px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img [src]="hero.images.md" class="card-img" alt="..." />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">
+          <strong>{{ hero.name }}</strong>
+        </h5>
+        <hr />
+        <p class="card-text">
+          <strong>Biografía: </strong>{{ hero.biography.fullName }}.
+          {{ hero.biography.placeOfBirth }}
+        </p>
+        <p class="card-text">
+          <strong>Ocupación: </strong>{{ hero.work.occupation }}
+        </p>
+        <p class="card-text">
+          <small class="text-muted"
+            ><strong>Alias: </strong>{{ hero.biography.aliases }}</small
+          >
+        </p>
+
+        <p></p>
+        <p>
+          <button
+            type="button"
+            [routerLink]="['/detalles', hero.id]"
+            class="btn btn-primary btn-sm"
+          >
+            Ver más
+          </button>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

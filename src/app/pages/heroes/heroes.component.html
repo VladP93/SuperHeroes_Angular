@@ -25,7 +25,11 @@
     <p class="lead text-muted"></p>
     <hr />
     <p>
-      <select class="form-control mx-sm-1 mb-2" [(ngModel)]="findByRace">
+      <select
+        class="form-control mx-sm-1 mb-2"
+        [(ngModel)]="findByRace"
+        (change)="p = 1"
+      >
         <option value="">Mostrar por Raza</option>
         <option
           value="{{ heroe.appearance.race }}"
@@ -33,7 +37,11 @@
           >{{ heroe.appearance.race }}</option
         >
       </select>
-      <select class="form-control mx-sm-1 mb-2" [(ngModel)]="findByAlignment">
+      <select
+        class="form-control mx-sm-1 mb-2"
+        [(ngModel)]="findByAlignment"
+        (change)="p = 1"
+      >
         <option value="">Mostrar por Lineamiento</option>
         <option
           value="{{ heroe.biography.alignment }}"
@@ -41,7 +49,11 @@
           >{{ heroe.biography.alignment | titlecase }}</option
         >
       </select>
-      <select class="form-control mx-sm-1 mb-2" [(ngModel)]="findByPublisher">
+      <select
+        class="form-control mx-sm-1 mb-2"
+        [(ngModel)]="findByPublisher"
+        (change)="p = 1"
+      >
         <option value="">Motrar por publicador</option>
         <option
           value="{{ heroe.biography.publisher }}"
@@ -57,53 +69,20 @@
   <div class="container">
     <div class="row">
       <div
-        class="card mb-3 espacio"
-        style="max-width: 540px;"
         *ngFor="
           let heroe of hs.heroes
             | findRace: findByRace
             | findAlignment: findByAlignment
             | findPublisher: findByPublisher
             | orderName
+            | paginate: { itemsPerPage: 10, currentPage: p }
         "
       >
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <img [src]="heroe.images.md" class="card-img" alt="..." />
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">
-                <strong>{{ heroe.name }}</strong>
-              </h5>
-              <hr />
-              <p class="card-text">
-                <strong>Biografía: </strong>{{ heroe.biography.fullName }}.
-                {{ heroe.biography.placeOfBirth }}
-              </p>
-              <p class="card-text">
-                <strong>Ocupación: </strong>{{ heroe.work.occupation }}
-              </p>
-              <p class="card-text">
-                <small class="text-muted"
-                  ><strong>Alias: </strong>{{ heroe.biography.aliases }}</small
-                >
-              </p>
-
-              <p></p>
-              <p>
-                <button
-                  type="button"
-                  [routerLink]="['/detalles', heroe.id]"
-                  class="btn btn-primary btn-sm"
-                >
-                  Ver más
-                </button>
-              </p>
-            </div>
-          </div>
-        </div>
+        <app-hero-card [hero]="heroe" *ngIf="heroe"></app-hero-card>
       </div>
+    </div>
+    <div class="pagination">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>
   </div>
 </div>

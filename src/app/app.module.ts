@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +21,7 @@ import { FormsModule } from '@angular/forms';
 import { RemoveRepRacePipe } from './pipes/remove-rep-race.pipe';
 import { RemoveRepAlignmentPipe } from './pipes/remove-rep-alignment.pipe';
 import { RemoveRepPublisherPipe } from './pipes/remove-rep-publisher.pipe';
+import { HeroCardComponent } from './components/hero-card/hero-card.component';
 
 @NgModule({
   declarations: [
@@ -37,8 +39,15 @@ import { RemoveRepPublisherPipe } from './pipes/remove-rep-publisher.pipe';
     RemoveRepRacePipe,
     RemoveRepAlignmentPipe,
     RemoveRepPublisherPipe,
+    HeroCardComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    NgxPaginationModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
