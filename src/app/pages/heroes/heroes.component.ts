@@ -7,6 +7,10 @@ import { HeroesService } from '../../services/heroes.service';
   styleUrls: ['./heroes.component.css'],
 })
 export class HeroesComponent implements OnInit {
+  findByRace = '';
+  findByAlignment = '';
+  findByPublisher = '';
+
   constructor(public hs: HeroesService) {}
 
   ngOnInit(): void {}

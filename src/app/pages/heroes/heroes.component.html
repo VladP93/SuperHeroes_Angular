@@ -21,31 +21,31 @@
 
 <section class="jumbotron text-center">
   <div class="container form-inline">
-    <h1>Listado</h1>
+    <h1>{{ " de heroes" | title }}</h1>
     <p class="lead text-muted"></p>
     <hr />
     <p>
-      <select class="form-control mx-sm-1 mb-2">
+      <select class="form-control mx-sm-1 mb-2" [(ngModel)]="findByRace">
         <option value="">Mostrar por Raza</option>
         <option
           value="{{ heroe.appearance.race }}"
-          *ngFor="let heroe of hs.heroes"
+          *ngFor="let heroe of hs.heroes | orderRace | removeRepRace"
           >{{ heroe.appearance.race }}</option
         >
       </select>
-      <select class="form-control mx-sm-1 mb-2">
+      <select class="form-control mx-sm-1 mb-2" [(ngModel)]="findByAlignment">
         <option value="">Mostrar por Lineamiento</option>
         <option
           value="{{ heroe.biography.alignment }}"
-          *ngFor="let heroe of hs.heroes"
-          >{{ heroe.biography.alignment }}</option
+          *ngFor="let heroe of hs.heroes | orderAlignment | removeRepAlignment"
+          >{{ heroe.biography.alignment | titlecase }}</option
         >
       </select>
-      <select class="form-control mx-sm-1 mb-2">
+      <select class="form-control mx-sm-1 mb-2" [(ngModel)]="findByPublisher">
         <option value="">Motrar por publicador</option>
         <option
           value="{{ heroe.biography.publisher }}"
-          *ngFor="let heroe of hs.heroes"
+          *ngFor="let heroe of hs.heroes | orderPublisher | removeRepPublisher"
           >{{ heroe.biography.publisher }}</option
         >
       </select>
@@ -59,7 +59,13 @@
       <div
         class="card mb-3 espacio"
         style="max-width: 540px;"
-        *ngFor="let heroe of hs.heroes"
+        *ngFor="
+          let heroe of hs.heroes
+            | findRace: findByRace
+            | findAlignment: findByAlignment
+            | findPublisher: findByPublisher
+            | orderName
+        "
       >
         <div class="row no-gutters">
           <div class="col-md-4">
