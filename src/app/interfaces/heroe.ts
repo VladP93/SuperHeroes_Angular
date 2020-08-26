@@ -2,7 +2,7 @@ export interface Heroe {
   id: string;
   name: string;
   powerstats: {
-    inteligence: string;
+    intelligence: string;
     strength: string;
     speed: string;
     durability: string;

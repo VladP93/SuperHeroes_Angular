@@ -9,7 +9,7 @@ const routes: Routes = [
     component: HeroesComponent,
   },
   {
-    path: 'detalles',
+    path: 'detalles/:id',
     component: DetalleComponent,
   },
   { path: '**', pathMatch: 'full', redirectTo: 'heroes' },
